@@ -1,0 +1,2 @@
+# homestarlinker
+`~ * $(ln -s)`
