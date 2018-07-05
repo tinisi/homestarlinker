@@ -3,24 +3,31 @@
 load ../helper
 
 # shellcheck disable=SC1090
-source "${PROJECT_DIR}"/bin/temp_link_file.sh
+source "${PROJECT_DIR}"/bin/link_file.sh
 
 HOME="${PROJECT_DIR}/test/tmp"
+FILES_DIR="${PROJECT_DIR}/test/tmp/files"
+
+DESCRIBE="link_file function"
 
 setup() {
-  touch "${HOME}"/somefile
+  mkdir -p ${FILES_DIR}
+  touch "${HOME}"/existingfile
+  touch "${FILES_DIR}"/anotherfile
 }
 
 teardown() {
-  rm -rf "${HOME}"/somefile*
+  rm -rf "${HOME}"/existingfile*
+  rm -rf "${HOME}"/anotherfile*
+  rm -rf "${FILES_DIR}"
 }
 
-@test "moves existing file to backup" {
-  run link_file "somefile"
-  [ -e "$HOME/somefile.backup" ]
+@test "${DESCRIBE} moves existing file to backup" {
+  run link_file "existingfile"
+  [ -e "$HOME/existingfile.backup" ]
 }
 
-@test "creates a soft link of file in home folder" {
-  run link_file "somefile"
-  [ -h "$HOME/somefile" ]
+@test "${DESCRIBE} creates a soft link of file in home folder" {
+  run link_file "anotherfile"
+  [ "$(readlink "$HOME/anotherfile")" == "$(find "${FILES_DIR}" -type f -name "anotherfile")" ]
 }

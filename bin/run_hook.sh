@@ -4,9 +4,9 @@ IFS=$'\n\t'
 
 FILES_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd ../files && pwd)
 
-link_file () {
-  if [ -e "$HOME/$1" ]; then
-    mv "$HOME/$1" "$HOME/$1.backup"
+run_hook () {
+  HOOK=${1:-}
+  if [ -e "${FILES_DIR}/${HOOK}" ]; then
+  	"${FILES_DIR}/${HOOK}"
   fi
-  ln -s "$FILES_DIR/$1" "$HOME/$1"
 }

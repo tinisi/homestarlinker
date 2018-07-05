@@ -2,13 +2,13 @@
 
 load helper
 
-# echo "${BATS_MOCK_TMPDIR}" >&2
-
 # this is the "code under test"
 # it would normally be in another file
-get_timestamp() {
+format_date() {
   date -r 222
 }
+
+DESCRIBE="date format util"
 
 setup() {
   _DATE_ARGS='-r 222'
@@ -21,10 +21,10 @@ teardown() {
   unstub date
 }
 
-@test "get_timestamp" {
-  result="$(get_timestamp)"
+@test "${DESCRIBE} formats date with expected arguments" {
+  result="$(format_date)"
   [ "$result" == 'I am stubbed!' ]
 
-  result="$(get_timestamp)"
+  result="$(format_date)"
   [ "$result" == 'Wed Dec 31 18:03:42 CST 1969' ]
 }
