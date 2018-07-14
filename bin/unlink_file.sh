@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
-FILES_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd ../files && pwd)
-
-link_file () {
-  if [ "$(readlink "$HOME/$1")" == "$(find "${FILES_DIR}" -type f -name "$1")" ]; then
-    rm "$HOME/$1"
+unlink_file () {
+  HOME_DIR=${1:-}
+  FILES_DIR=${2:-}
+  FILE=${3:-}
+  if [ "$(readlink "$HOME_DIR/${FILE}")" == "$(find "${FILES_DIR}" -type f -name "${FILE}")" ]; then
+    rm "${HOME_DIR}/${FILE}"
   fi
 }
-
-export link_file

@@ -2,4 +2,4 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-echo "Pre hook run."
+echo "Clean post hook run."

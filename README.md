@@ -4,12 +4,12 @@
 
 To install things
 ```
-./bin/bootstrap.sh
+./bin/bootstrap.sh "/path/to/dotfiles/repo"
 ```
 
 To cleanup/remove things
 ```
-./bin/cleanup.sh
+./bin/cleanup.sh "/path/to/dotfiles/repo"
 ```
 
 ### Testing
@@ -18,8 +18,7 @@ Install `bats-core` using Homebrew or otherwise get it in your path by [cloning 
 
 Run the test files using the bats cli
 ```
-bats test/test_test.bats
-bats test/bin/test_link_file.bats
+bats test/*.bats test/**/*.bats
 ```
 
 ### Linting
@@ -27,5 +26,5 @@ bats test/bin/test_link_file.bats
 Install shellcheck using homebrew or the Linux package manager of your choice.
 
 ```
-shellcheck -ax bin/bootstrap.sh
+shellcheck --check-sourced --external-sources bin/*.sh
 ```

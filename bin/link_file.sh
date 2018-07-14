@@ -2,11 +2,12 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-FILES_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd ../files && pwd)
-
 link_file () {
-  if [ -e "$HOME/$1" ]; then
-    mv "$HOME/$1" "$HOME/$1.backup"
+  HOME_DIR=${1:-}
+  FILES_DIR=${2:-}
+  FILE=${3:-}
+  if [ -e "$HOME_DIR/$FILE" ]; then
+    mv "${HOME_DIR}/${FILE}" "${HOME_DIR}/${FILE}.backup"
   fi
-  ln -s "$FILES_DIR/$1" "$HOME/$1"
+  ln -s "${FILES_DIR}/${FILE}" "${HOME_DIR}/${FILE}"
 }
