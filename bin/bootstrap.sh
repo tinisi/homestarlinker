@@ -14,15 +14,15 @@ source "${DIR}"/run_hook.sh
 # shellcheck source=bin/link_file.sh
 source "${DIR}"/link_file.sh
 
-FILES=$(run_hook "${FILES_DIR}" manifest.sh)
+FILES=$(run_hook "${FILES_DIR}" _homestarlinker_manifest.sh)
 
 echo "Attempting to run pre hook."
-run_hook "${FILES_DIR}" pre.sh
+run_hook "${FILES_DIR}" "_homestarlinker_bootstrap_pre.sh"
 
-echo "Linking files"
+echo "Linking files."
 for FILE in ${FILES}; do
  link_file "${HOME}" "${FILES_DIR}" "${FILE}"
 done
 
 echo "Attempting to run post hook."
-run_hook "${FILES_DIR}" post.sh
+run_hook "${FILES_DIR}" "_homestarlinker_bootstrap_post.sh"
