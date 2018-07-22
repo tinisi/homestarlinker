@@ -17,7 +17,7 @@ source "${DIR}"/unlink_file.sh
 FILES=$(run_hook "${FILES_DIR}" manifest.sh)
 
 echo "Attempting to run pre-clean hook"
-run_hook "${FILES_DIR}" "clean_pre.sh"
+run_hook "${FILES_DIR}" clean_pre.sh
 
 echo "Cleaning up links"
 for FILE in ${FILES}; do
@@ -25,4 +25,4 @@ for FILE in ${FILES}; do
 done
 
 echo "Attempting to run post clean hook"
-run_hook "${FILES_DIR}" "clean_post.sh"
+run_hook "${FILES_DIR}" clean_post.sh

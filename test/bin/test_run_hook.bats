@@ -2,11 +2,11 @@
 
 load ../helper
 
+DESCRIBE="run_hook function"
+
 source "${PROJECT_DIR}"/bin/run_hook.sh
 
 FILES_DIR="${PROJECT_DIR}/test/tmp"
-
-DESCRIBE="run_hook function"
 
 setup() {
   cat <<END > "${FILES_DIR}"/some_hook.sh

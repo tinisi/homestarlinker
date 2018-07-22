@@ -4,7 +4,7 @@ IFS=$'\n\t'
 
 DEFAULT_FILES_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd ../files && pwd)
 
-# Read in a path from first argument
+# Read in a path from first command line argument
 FILES_DIR=${1:-$DEFAULT_FILES_DIR}
 
 DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
@@ -17,7 +17,7 @@ source "${DIR}"/link_file.sh
 FILES=$(run_hook "${FILES_DIR}" manifest.sh)
 
 echo "Attempting to run pre hook."
-run_hook "${FILES_DIR}" "pre.sh"
+run_hook "${FILES_DIR}" pre.sh
 
 echo "Linking files"
 for FILE in ${FILES}; do
@@ -25,4 +25,4 @@ for FILE in ${FILES}; do
 done
 
 echo "Attempting to run post hook."
-run_hook "${FILES_DIR}" "post.sh"
+run_hook "${FILES_DIR}" post.sh
