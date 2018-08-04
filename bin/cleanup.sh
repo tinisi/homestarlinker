@@ -2,12 +2,12 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-DEFAULT_FILES_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd ../files && pwd)
+DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+
+DEFAULT_FILES_DIR=$(cd "$DIR" && cd ../files && pwd)
 
 # Read in a path from first command line argument
-FILES_DIR=${1:-$DEFAULT_FILES_DIR}
-
-DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+FILES_DIR=$(cd "${1:-$DEFAULT_FILES_DIR}" && pwd)
 
 # shellcheck source=bin/run_hook.sh
 source "${DIR}"/run_hook.sh
