@@ -2,7 +2,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-DEFAULT_FILES_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd ../files && pwd)
+DEFAULT_FILES_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/../files" && pwd)
 
 # Read in a path from first command line argument
 FILES_DIR=$(cd "${1:-$DEFAULT_FILES_DIR}" && pwd)

@@ -35,5 +35,5 @@ teardown() {
 
 @test "${DESCRIBE} does not error out if the file does not match" {
   RESULT=$(run unlink_file "${HOME_DIR}" "${FILES_DIR}" "anotherfile" && echo $?)
-  [ "$RESULT" == "0" ]
+  [ "$RESULT" = "0" ]
 }

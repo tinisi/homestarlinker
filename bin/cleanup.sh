@@ -4,7 +4,7 @@ IFS=$'\n\t'
 
 DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
-DEFAULT_FILES_DIR=$(cd "$DIR" && cd ../files && pwd)
+DEFAULT_FILES_DIR=$(cd "$DIR"/../files && pwd)
 
 # Read in a path from first command line argument
 FILES_DIR=$(cd "${1:-$DEFAULT_FILES_DIR}" && pwd)

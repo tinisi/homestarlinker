@@ -21,5 +21,5 @@ teardown() {
 
 @test "${DESCRIBE} creates a soft link of file in home folder" {
   run link_file "${HOME_DIR}" "${FILES_DIR}" "somedotfile"
-  [ "$(readlink "$HOME_DIR/somedotfile")" == "$(find "${FILES_DIR}" -type f -name "somedotfile")" ]
+  [ "$(readlink "$HOME_DIR/somedotfile")" = "$(find "${FILES_DIR}" -type f -name "somedotfile")" ]
 }

@@ -23,8 +23,8 @@ teardown() {
 
 @test "${DESCRIBE} formats date with expected arguments" {
   result="$(format_date)"
-  [ "$result" == 'I am stubbed!' ]
+  [ "$result" = 'I am stubbed!' ]
 
   result="$(format_date)"
-  [ "$result" == 'Wed Dec 31 18:03:42 CST 1969' ]
+  [ "$result" = 'Wed Dec 31 18:03:42 CST 1969' ]
 }
