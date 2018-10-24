@@ -4,12 +4,12 @@
 
 To install things
 ```
-./bin/bootstrap.sh "/path/to/dotfiles/repo"
+./bin/bootstrap "/path/to/dotfiles/repo"
 ```
 
 To cleanup/remove things
 ```
-./bin/cleanup.sh "/path/to/dotfiles/repo"
+./bin/cleanup "/path/to/dotfiles/repo"
 ```
 
 ### Testing
@@ -26,5 +26,5 @@ bats test/*.bats test/**/*.bats
 Install shellcheck using homebrew or the Linux package manager of your choice.
 
 ```
-shellcheck --check-sourced --external-sources bin/*.sh
+shellcheck --check-sourced --external-sources bin/*
 ```

@@ -2,17 +2,19 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-DEFAULT_FILES_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/../files" && pwd)
-
-# Read in a path from first command line argument
-FILES_DIR=$(cd "${1:-$DEFAULT_FILES_DIR}" && pwd)
-
 DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
-# shellcheck source=bin/run_hook.sh
-source "${DIR}"/run_hook.sh
-# shellcheck source=bin/link_file.sh
-source "${DIR}"/link_file.sh
+DEFAULT_FILES_DIR=$(cd "$DIR"/../files && pwd)
+
+# Read in a path from first command line argument, with a nice default
+FILES_DIR=$(cd "${1:-$DEFAULT_FILES_DIR}" && pwd)
+
+LIB_DIR=$(cd "$DIR"/../lib && pwd)
+
+# shellcheck source=lib/run_hook.sh
+source "${LIB_DIR}"/run_hook.sh
+# shellcheck source=lib/link_file.sh
+source "${LIB_DIR}"/link_file.sh
 
 FILES=$(run_hook "${FILES_DIR}" _homestarlinker_manifest.sh)
 

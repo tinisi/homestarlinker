@@ -4,7 +4,7 @@ load ../helper
 
 DESCRIBE="unlink_file function"
 
-source "${PROJECT_DIR}"/bin/unlink_file.sh
+source "${PROJECT_DIR}"/lib/unlink_file.sh
 
 HOME_DIR="${PROJECT_DIR}/test/tmp"
 FILES_DIR="${PROJECT_DIR}/test/tmp/files"

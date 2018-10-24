@@ -6,13 +6,15 @@ DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 DEFAULT_FILES_DIR=$(cd "$DIR"/../files && pwd)
 
-# Read in a path from first command line argument
+# Read in a path from first command line argument, with a nice default
 FILES_DIR=$(cd "${1:-$DEFAULT_FILES_DIR}" && pwd)
 
-# shellcheck source=bin/run_hook.sh
-source "${DIR}"/run_hook.sh
-# shellcheck source=bin/link_file.sh
-source "${DIR}"/unlink_file.sh
+LIB_DIR=$(cd "$DIR"/../lib && pwd)
+
+# shellcheck source=lib/run_hook.sh
+source "${LIB_DIR}"/run_hook.sh
+# shellcheck source=lib/link_file.sh
+source "${LIB_DIR}"/unlink_file.sh
 
 FILES=$(run_hook "${FILES_DIR}" _homestarlinker_manifest.sh)
 

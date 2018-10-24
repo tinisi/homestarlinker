@@ -4,7 +4,7 @@ load ../helper
 
 DESCRIBE="link_file function"
 
-source "${PROJECT_DIR}"/bin/link_file.sh
+source "${PROJECT_DIR}"/lib/link_file.sh
 
 HOME_DIR="${PROJECT_DIR}/test/tmp"
 FILES_DIR="${PROJECT_DIR}/test/tmp/files"

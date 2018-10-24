@@ -12,10 +12,10 @@ Questions for Karns:
     * seems OK
 * I chose to just use "${VARIABLE_NAME}" everywhere, izzat over the top?
 * Would it be nifty to introduce a `libexec` folder for the things under unit test that are NOT meant to be called directly? (link_file.sh, run_hook.sh, unlink_file.sh)
-    * nah, not gonna do this
+    * made a lib folder, using .sh for these files since they are sourced
 
 ```
-./bin/bootstrap.sh ./files
+./bin/bootstrap ./files
 ```
 
 xdg
