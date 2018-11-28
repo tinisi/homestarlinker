@@ -16,6 +16,11 @@ To cleanup/remove things
 
 Install `bats-core` using Homebrew or otherwise get it in your path by [cloning the repo](https://github.com/bats-core/bats-core).
 
+Install `bats-mock` by pulling in git submodules.
+```
+git submodule update --init
+```
+
 Run the test files using the bats cli
 ```
 bats test/*.bats test/**/*.bats
